@@ -1,0 +1,42 @@
+#pragma version 2
+// Accepts only if (transaction type is OPT-IN OR (transaction type is asset transfer, 
+// sender is goldOwnerAccount and asset transfer amount is less than equal to 1000 ))
+global GroupSize
+int 1
+==
+txn GroupIndex
+int 0
+==
+&&
+txn AssetAmount
+int 0
+==
+&&
+txn TypeEnum
+int 4
+==
+txn Sender
+addr EDXG4GGBEHFLNX6A7FGT3F6Z3TQGIU6WVVJNOXGYLVNTLWDOCEJJ35LWJY
+==
+&&
+txn AssetAmount
+int 1000
+<=
+&&
+||
+txn TypeEnum
+int 4
+==
+txn RekeyTo
+global ZeroAddress
+==
+&&
+txn CloseRemainderTo
+global ZeroAddress
+==
+&&
+txn Fee
+int 10000
+<=
+&&
+&&
